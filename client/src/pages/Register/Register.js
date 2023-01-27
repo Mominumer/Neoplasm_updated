@@ -55,10 +55,11 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if(user && user.role==="Student")
+    if(user && user.role==="Student"   )
     {
       history.push('/')
     }
+    
 
    
   }, [user])

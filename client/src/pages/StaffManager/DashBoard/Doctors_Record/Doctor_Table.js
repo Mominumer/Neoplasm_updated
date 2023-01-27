@@ -30,18 +30,18 @@ const useStyles = makeStyles({
   },
 });
 
-const StudentTable = () => {
+const DoctorsTable = () => {
   const classes = useStyles();
 
   const [data, setData] = useState([]);
 
   const userList = async () => {
-    const user = await Axios.get("/users/student",{
+    const user = await Axios.get("/users/teacher",{
         headers:{
             "Authorization":"Bearer "+localStorage.getItem("auth_token")
         }
     })
-    setData(user.data.studentInfo)
+    setData(user.data.teacherInfo)
     //console.log(user.data.teacherInfo)
   };
 
@@ -140,4 +140,4 @@ const StudentTable = () => {
   );
 };
 
-export default StudentTable;
+export default DoctorsTable;

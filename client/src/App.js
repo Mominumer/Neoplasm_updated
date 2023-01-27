@@ -6,7 +6,7 @@ import {
   Switch,
   useHistory,
 } from "react-router-dom";
-import DashBoard from "./pages/DashBoard/Dashboard";
+import DashBoard from "./pages/StaffManager/DashBoard/Dashboard";
 
 
 
@@ -17,7 +17,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
 import AdminDashboard from "./pages/Admin/AdminDashboard/AdminDashboard";
-import Record_admin from "./pages/Admin/AdminDashboard/Record/Record_admin";
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import StudentRoute from "./components/PrivateRoute/StudentRoute";
@@ -26,11 +26,10 @@ import AdminRoute from "./components/PrivateRoute/AdminRoute";
 
 import StudentInfo from "./pages/Admin/Student/StudentInfo";
 
-import Upload from "./pages/Upload_Image/upload";
-import All_Record from "./pages/All_Record/all_record";
-import Recieved_Mails from "./pages/Recieved_Mails/recieved_mails";
-import Sent_Mails from "./pages/Sent_Mails/sent_mails";
-import NotFound from "./pages/404NotFoud/NotFound";
+import ReceptionistsInfo from "./pages/StaffManager/DashBoard/Receptionists_Record/Receptionist_Info";
+import DoctorsInfo from "./pages/StaffManager/DashBoard/Doctors_Record/Doctor_Info";
+import RadiologistsInfo from "./pages/StaffManager/DashBoard/Radiologists_Record/Radiologist_Info";
+
 
 
 
@@ -51,14 +50,23 @@ const Routing = () => {
       <StudentRoute exact path="/">
         <DashBoard />
       </StudentRoute>
+      <StudentRoute exact path="/Receptionist_Info">
+        <ReceptionistsInfo/>
+      </StudentRoute>
+      <StudentRoute exact path="/Doctor_Info">
+        <DoctorsInfo/>
+      </StudentRoute>
+      <StudentRoute exact path="/Radiologist_Info">
+        <RadiologistsInfo/>
+      </StudentRoute>
+
+
      
       <AdminRoute exact path="/admin-dashboard">
         <AdminDashboard />
       </AdminRoute>
 
-      <AdminRoute exact path="/admin/record">
-        <Record_admin />
-      </AdminRoute>
+     
       
       <AdminRoute exact path="/admin/student-info">
         <StudentInfo />
@@ -69,23 +77,6 @@ const Routing = () => {
         <Profile />
       </Route>
 
-      <Route exact path="/upload">
-        <Upload />
-      </Route>
-
-      <Route exact path="/received">
-        <Recieved_Mails />
-      </Route>
-
-      <Route exact path="/all_record">
-        <All_Record/>
-      </Route>
-
-      <Route exact path="/sent">
-        <Sent_Mails />
-      </Route>
-     
-      
       <Route exact path="/login">
         <Login />
       </Route>
@@ -93,9 +84,7 @@ const Routing = () => {
         <Register />
       </Route>
       
-      <Route  path="*">
-        <NotFound />
-      </Route>
+      
     </Switch>
   );
 };

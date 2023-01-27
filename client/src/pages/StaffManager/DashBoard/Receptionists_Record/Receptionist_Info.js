@@ -1,11 +1,11 @@
 import { Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import MainSidebar from "../AdminDashboard/MainSidebar/MainSidebar";
-import StudentTable from "./StudentTable/StudentTable";
+import MainSidebar from "../MainSidebar/MainSidebar";
+import ReceptionistTable from "./Receptionist_Table"
 import { useHistory } from "react-router-dom";
 
-const StudentInfo = () => {
+const ReceptionistInfo = () => {
   const history= useHistory();
   const handleClick=()=>{
     history.push({
@@ -26,7 +26,7 @@ const StudentInfo = () => {
                   className="text-center text-primary py-5"
                   variant="h4"
                 >
-                 Staff Managers
+                 Receptionists
                 </Typography>
                
                   <button onClick={handleClick }>
@@ -34,7 +34,7 @@ Add
                   </button>
                   
               </Paper>
-              <StudentTable/>
+              <ReceptionistTable/>
             </Container>
           </Col>
         </Row>
@@ -43,4 +43,5 @@ Add
   );
 };
 
-export default StudentInfo;
+export default ReceptionistInfo;
+
