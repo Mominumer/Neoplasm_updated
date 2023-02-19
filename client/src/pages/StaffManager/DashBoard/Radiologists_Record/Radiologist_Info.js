@@ -4,12 +4,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import MainSidebar from "../MainSidebar/MainSidebar";
 import ReceptionistTable from "./Radiologist_Table"
 import { useHistory } from "react-router-dom";
+import "../Dashboard.css";
+
 
 const RadiologistInfo = () => {
   const history= useHistory();
   const handleClick=()=>{
     history.push({
-      pathname:"/register"
+      pathname:"/Staff-register"
     });
   };
   return (
@@ -29,9 +31,7 @@ const RadiologistInfo = () => {
                  Radiologists
                 </Typography>
                
-                  <button onClick={handleClick }>
-Add
-                  </button>
+                <button class="button-91" role="button" onClick={handleClick }>Add</button>
                   
               </Paper>
               <ReceptionistTable/>

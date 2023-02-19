@@ -12,6 +12,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false);
@@ -32,6 +33,7 @@ const Register = () => {
         email,
         password,
         confirmPassword,
+        role:"Staff",
       }),
     })
       .then((res) => res.json())
@@ -55,13 +57,11 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if(user && user.role==="Student"   )
+    if(user && user.role==="Staff"   )
     {
       history.push('/')
     }
     
-
-   
   }, [user])
 
   return (
@@ -70,7 +70,7 @@ const Register = () => {
         <Toast_Comp
           setToast={setToast}
           renderToast={toast}
-          msg="Registration Success Please Login"
+          msg="Registration Success "
         />
         <Row>
           <Col md={6} className="mx-auto mt-4 ">
@@ -125,14 +125,13 @@ const Register = () => {
                     type="password"
                     placeholder="Confirm Password"
                   />
-                  <span style={{ color: "red" }}>
+                     <span style={{ color: "red" }}>
                     {error && error.confirmPassword}
                   </span>
-                </Form.Group>
-                <Typography style={{ color: "GrayText" }} variant="subtitle2">
-                  Already Have an account?
-                  <Link to="/login">Login Here</Link>
-                </Typography>
+                  </Form.Group>
+
+                  
+                
                 <Button
                   className="mt-2"
                   color="primary"

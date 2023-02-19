@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import MainSidebar from "../AdminDashboard/MainSidebar/MainSidebar";
 import StudentTable from "./StudentTable/StudentTable";
 import { useHistory } from "react-router-dom";
+import "./StudentTable/Dashboard.css";
 
 const StudentInfo = () => {
   const history= useHistory();
@@ -29,9 +30,7 @@ const StudentInfo = () => {
                  Staff Managers
                 </Typography>
                
-                  <button onClick={handleClick }>
-Add
-                  </button>
+                <button class="button-91" role="button" onClick={handleClick }>Add</button>
                   
               </Paper>
               <StudentTable/>

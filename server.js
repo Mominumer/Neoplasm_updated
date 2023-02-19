@@ -20,11 +20,9 @@ app.use(cors());
 //Routes
 
 app.use("/auth", require("./routes/authRoute"));
-app.use("/", require("./routes/courseRoute"));
 app.use("/users", require("./routes/userRoute"));
-app.use("/profile", require("./routes/profileRoute"));
-app.use("/enroll-course", require("./routes/enrollRoute"));
-app.use("/get-courses", require("./routes/enrollRoute"));
+app.use("/patient", require("./routes/patientRoute"));
+
 
 //Deploy:
 

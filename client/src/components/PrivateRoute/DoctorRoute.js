@@ -1,16 +1,16 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 
-const StudentRoute = ({ children, ...rest }) => {
+const DoctorRoute = ({ children, ...rest }) => {
     const user=JSON.parse(localStorage.getItem("user"))
-   
+    
 
     return (
         <div>
         <Route
   {...rest}
   render={({ location }) =>
-    user && user.role==="Student" ? (
+    user && user.role==="Doctor" ? (
       children
     ) : (
       <Redirect
@@ -26,4 +26,4 @@ const StudentRoute = ({ children, ...rest }) => {
     );
 };
 
-export default StudentRoute;
+export default DoctorRoute;

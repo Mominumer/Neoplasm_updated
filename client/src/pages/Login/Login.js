@@ -57,13 +57,25 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(user && user.role==="Student")
+    if(user && user.role==="Staff")
     {
       history.push('/')
     }
     else if(user && user.role==="Admin")
     {
       history.push('/admin-dashboard')
+    }
+    else if(user && user.role==="Receptionist")
+    {
+      history.push('/Receptionist-dashboard')
+    }
+    else if(user && user.role==="Radiologist")
+    {
+      history.push('/Radiologist-dashboard')
+    }
+    else if(user && user.role==="Doctor")
+    {
+      history.push('/Doctor-dashboard')
     }
    
   }, [user])

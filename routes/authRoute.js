@@ -2,6 +2,7 @@ const {
   login__controller,
   register__controller,
 } = require("../controllers/authController");
+
 const { login_validator} = require("../middlewares/loginValidator");
 const registerValidator = require("../middlewares/registerValidator");
 const loginValidator = require("../middlewares/loginValidator");

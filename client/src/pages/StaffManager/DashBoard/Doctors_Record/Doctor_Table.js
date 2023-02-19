@@ -20,6 +20,8 @@ import TablePaginationActions from "@material-ui/core/TablePagination/TablePagin
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+import Toast_Comp from "../../../../components/Toast/Toast_Comp";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -30,21 +32,41 @@ const useStyles = makeStyles({
   },
 });
 
-const DoctorsTable = () => {
+const ReceptionistTable = () => {
   const classes = useStyles();
-
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(false);
   const [data, setData] = useState([]);
-
+  const history=useHistory();
   const userList = async () => {
-    const user = await Axios.get("/users/teacher",{
+    const user = await Axios.get("/users/doctor",{
         headers:{
             "Authorization":"Bearer "+localStorage.getItem("auth_token")
         }
     })
-    setData(user.data.teacherInfo)
-    //console.log(user.data.teacherInfo)
+    setData(user.data.doctorInfo)
+   // console.log(user.data.teacherInfo)
   };
-
+  const deleteUser = async (id)=> {
+    const user= await Axios.get(`/users/delete/${id}`,{
+    })
+    if(user){
+      console.log("deleted successfully")
+      setToast(true); 
+      userList();
+    }
+    else{
+      console.log("something went wrong")
+    }
+  }
+  const editUser = async (user)=>{
+    history.push({
+      pathname: "/edit-staff",
+      state:{
+        user:user
+      }
+    });
+  }
   useEffect(() => {
     userList()
   }, []);
@@ -66,6 +88,11 @@ const DoctorsTable = () => {
   };
   return (
     <Container className={classes.root}>
+      <Toast_Comp
+          setToast={setToast}
+          renderToast={toast}
+          msg="User Deleted Succesfully"
+        />
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -100,10 +127,10 @@ const DoctorsTable = () => {
                 {row.email}
                 </TableCell>
                 <TableCell className="" align="center">
-                  <IconButton>
+                  <IconButton onClick={()=>editUser(row)}>  
                     <EditIcon color="primary" />
                   </IconButton>
-                  <IconButton>
+                  <IconButton onClick = {()=>deleteUser(row._id)}>
                     <DeleteIcon style={{ color: "red" }} />
                   </IconButton>
                 </TableCell>
@@ -140,4 +167,4 @@ const DoctorsTable = () => {
   );
 };
 
-export default DoctorsTable;
+export default ReceptionistTable;

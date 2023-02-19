@@ -6,16 +6,16 @@ module.exports.adminAuthentication = (req, res, next) => {
     }
     next()
 }
-module.exports.studentAuthentication = (req, res, next) => {
-    if(req.user.role!== "Student"){
+module.exports.staffAuthentication = (req, res, next) => {
+    if(req.user.role!== "Staff"){
         return res.status(401).json({
             err:"Access Denied"
         })
     }
     next()
 }
-module.exports.teacherAuthentication = (req, res, next) => {
-    if(req.user.role!== "Teacher"){
+module.exports.receptionistAuthentication = (req, res, next) => {
+    if(req.user.role!== "Receptionist"){
         return res.status(401).json({
             err:"Access Denied"
         })

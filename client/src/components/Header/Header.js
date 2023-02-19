@@ -40,7 +40,7 @@ const Header = () => {
           <ul>
             {
               user.role==="Teacher" && <> <li>
-              <NavLink onClick={toggleClose} to="/teacher-dashboard">Dashboard</NavLink>
+              <NavLink onClick={toggleClose} to="/radiologist-dashboard">Dashboard</NavLink>
             </li>
             
            
@@ -68,10 +68,6 @@ const Header = () => {
 
              </> 
             }
-            
-            <li>
-              <Link onClick={toggleClose} to="/profile">Profile</Link>
-            </li>
             
 
             {
